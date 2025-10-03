@@ -7,7 +7,9 @@
     <meta name="description" content="Consultoría especializada en Seguridad y Salud en el Trabajo, Gestión Humana Estratégica, Seguridad Social Integral y Gestión de Nómina. Soluciones integrales para tu empresa.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
+
+
+<style>
         :root {
             --primary-blue: #1e3a8a;
             --secondary-blue: #3b82f6;
@@ -28,6 +30,7 @@
             --shadow-light: 0 10px 30px rgba(30, 58, 138, 0.1);
             --shadow-medium: 0 15px 40px rgba(30, 58, 138, 0.15);
             --shadow-heavy: 0 20px 50px rgba(30, 58, 138, 0.2);
+            --shadow-floating: 0 25px 60px rgba(30, 58, 138, 0.3);
             
             --border-radius: 16px;
             --border-radius-small: 8px;
@@ -59,6 +62,61 @@
             overflow: hidden;
         }
 
+/* Logo en Contact Bar */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-logo {
+    height: 40px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.contact-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Ajustes para el contact-content con logo */
+.contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}
+
+/* Responsive para el logo */
+@media (max-width: 768px) {
+    .contact-logo {
+        height: 35px;
+    }
+    
+    .contact-content {
+        gap: 1.5rem;
+    }
+    
+    .logo-container {
+        order: -1; /* Coloca el logo primero en móviles */
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-logo {
+        height: 30px;
+    }
+    
+    .contact-content {
+        gap: 1rem;
+    }
+}
         .hero::before {
             content: '';
             position: absolute;
@@ -111,6 +169,7 @@
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeIn 1s ease-out 0.6s both;
+            margin-bottom: 3rem;
         }
 
         .btn {
@@ -165,6 +224,135 @@
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
+        }
+
+        /* Carrusel Section Flotante */
+        .carousel-section {
+            padding: 2rem 0;
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-floating);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+
+        .carousel-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 70px rgba(30, 58, 138, 0.4);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 350px;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(30, 58, 138, 0.95));
+            color: var(--text-light);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .carousel-caption h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .carousel-caption p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: var(--text-light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            font-size: 1.2rem;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.15);
+        }
+
+        .carousel-prev {
+            left: 25px;
+        }
+
+        .carousel-next {
+            right: 25px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--text-light);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.2);
         }
 
         /* Navigation */
@@ -234,14 +422,119 @@
         }
 
         /* Contact Bar */
-        .contact-bar {
-            background: var(--dark-gradient);
-            color: var(--text-light);
-            padding: 1rem 0;
-            position: relative;
-            overflow: hidden;
-        }
+.contact-bar {
+    background: var(--dark-gradient);
+    color: var(--text-light);
+    padding: 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
 
+.contact-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+    animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}
+
+/* Logo en Contact Bar */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-logo {
+    height: 40px;
+    width: auto;
+}
+
+.contact-logo:hover {
+    transform: scale(1.05);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+}
+
+.contact-item i {
+    font-size: 1.2rem;
+    color: var(--light-blue);
+}
+
+.contact-button {
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-button:hover {
+    color: var(--light-blue);
+}
+
+/* Responsive Design para Contact Bar */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .contact-logo {
+        height: 35px;
+    }
+    
+    .logo-container {
+        order: -1; /* Coloca el logo primero en móviles */
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-logo {
+        height: 30px;
+    }
+    
+    .contact-content {
+        gap: 0.75rem;
+    }
+    
+    .contact-item {
+        font-size: 0.9rem;
+    }
+    
+    .contact-item i {
+        font-size: 1rem;
+    }
+}
         .contact-bar::before {
             content: '';
             position: absolute;
@@ -623,6 +916,63 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .carousel-section {
+                padding: 1rem 0;
+            }
+            
+            .carousel-track {
+                height: 280px;
+            }
+            
+            .carousel-nav {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .carousel-prev {
+                left: 15px;
+            }
+            
+            .carousel-next {
+                right: 15px;
+            }
+            
+            .carousel-caption {
+                padding: 1.5rem;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.1rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 220px;
+            }
+            
+            .carousel-caption {
+                padding: 1rem;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.8rem;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
 
         /* Scroll animations */
@@ -645,7 +995,9 @@
             background-position: center;
             background-size: contain;
         }
-    </style>
+    </style>   
+
+
 </head>
 <body>
     <!-- Navigation -->
@@ -664,6 +1016,9 @@
     <!-- Contact Bar -->
     <div class="contact-bar">
         <div class="contact-content">
+<div class="logo-container">
+            <img src="logo 2.png" alt="Gestión Integral Consultorías" class="contact-logo">
+        </div>
             <div class="contact-item">
                 <i class="fas fa-user"></i>
                 <span>Jhon Jairo Guillen</span>
@@ -702,6 +1057,68 @@
             </div>
         </div>
     </section>
+
+
+<!-- Carrusel Section -->
+<div class="carousel-section fade-in">
+    <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide">
+                <img src="image006.webp" alt="Sistema de Gestión SG-SST" loading="lazy">
+                <div class="carousel-caption">
+                    <h3>Sistema de Gestión SG-SST</h3>
+                    <p>Implementación de sistemas de seguridad y salud en el trabajo</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="image009.webp" alt="Tendencias en Gestión del Talento Humano" loading="lazy">
+                <div class="carousel-caption">
+                    <h3>Tendencias en Gestión del Talento</h3>
+                    <p>Conferencias sobre gestión estratégica de recursos humanos</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="image012.webp" alt="Oficinas de Consultoría" loading="lazy">
+                <div class="carousel-caption">
+                    <h3>Nuestras Oficinas</h3>
+                    <p>Espacios profesionales para atender a nuestros clientes</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="image014.webp" alt="Eventos Corporativos" loading="lazy">
+                <div class="carousel-caption">
+                    <h3>Eventos Corporativos</h3>
+                    <p>Participación en importantes eventos del sector</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="image020.webp" alt="Boutique de Consultoría" loading="lazy">
+                <div class="carousel-caption">
+                    <h3>Boutique de Consultoría</h3>
+                    <p>Servicios personalizados para cada cliente</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="image036.webp" alt="Relaciones con Clientes" loading="lazy">
+                <div class="carousel-caption">
+                    <h3>Relaciones con Clientes</h3>
+                    <p>Construyendo relaciones duraderas y de confianza</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-nav carousel-prev" id="carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-nav carousel-next" id="carousel-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+    <div class="carousel-dots" id="carousel-dots">
+        <!-- Los puntos se generarán dinámicamente con JavaScript -->
+    </div>
+</div>
+
+
 
     <!-- Services Section -->
     <section class="section" id="servicios">
@@ -849,7 +1266,7 @@
                         <p>"La implementación del SG-SST fue impecable. Cumplieron con todos los requisitos legales y nos capacitaron adecuadamente. Ahora tenemos un sistema robusto que protege a nuestros colaboradores."</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Nicolás Luque" class="author-avatar">
+                        <img src="./Foto Nicolas Luque.jpeg" alt="Nicolás Luque" class="author-avatar">
                         <div class="author-info">
                             <h4>Nicolás Luque</h4>
                             <p>Director General de Portaltex S.A.S.</p>
@@ -983,6 +1400,100 @@
         window.addEventListener('load', () => {
             document.body.style.opacity = '1';
         });
+
+
+
+// Carrusel functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const dotsContainer = document.getElementById('carousel-dots');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateCarousel();
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Auto-advance every 5 seconds
+    let autoSlide = setInterval(nextSlide, 5000);
+    
+    // Pause auto-advance on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoSlide);
+    });
+    
+    carouselContainer.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(nextSlide, 5000);
+    });
+    
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+    
+    carouselContainer.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide(); // Swipe left
+            } else {
+                prevSlide(); // Swipe right
+            }
+        }
+    }
+});
+
+
     </script>
 </body>
 </html>
