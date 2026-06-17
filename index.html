@@ -66,6 +66,18 @@ body::before{
   backdrop-filter:blur(18px);
   box-shadow:0 2px 30px rgba(0,0,0,.35);
 }
+/* ─── LOGO EN TOPBAR ──────────────────────────────────────────── */
+.topbar-logo-wrap{
+  display:flex;align-items:center;gap:.75rem;
+}
+.topbar-logo-img{
+  height:42px;width:auto;
+  filter:brightness(0) invert(1);
+  transition:filter .3s;
+}
+.topbar.scrolled .topbar-logo-img{
+  filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(232,161,36,.4));
+}
 .topbar-logo{
   font-family:var(--ff-head);font-weight:800;font-size:1.15rem;
   color:var(--white);letter-spacing:-.02em;line-height:1.1;
@@ -98,7 +110,6 @@ body::before{
   display:flex;flex-direction:column;justify-content:center;
   background:var(--navy);overflow:hidden;
 }
-/* animated mesh */
 .hero-mesh{
   position:absolute;inset:0;
   background:
@@ -120,7 +131,6 @@ body::before{
     rgba(255,255,255,.018) 61px
   );
 }
-/* gold accent bar */
 .hero-accent-bar{
   position:absolute;left:0;top:0;bottom:0;width:5px;
   background:linear-gradient(180deg,transparent 0%,var(--gold) 30%,var(--gold-light) 70%,transparent 100%);
@@ -179,7 +189,7 @@ body::before{
 .hero-stat strong{display:block;font-family:var(--ff-head);font-size:1.9rem;font-weight:800;color:var(--white);}
 .hero-stat span{font-size:.8rem;color:var(--gray-400);letter-spacing:.05em;text-transform:uppercase;}
 
-/* hero right side: featured card stack */
+/* ─── HERO RIGHT: CARD CON SLIDER ────────────────────────────── */
 .hero-right{
   position:relative;animation:fadeSlideUp .8s var(--ease) .2s both;
 }
@@ -190,7 +200,40 @@ body::before{
   padding:2rem;
   box-shadow:0 25px 60px rgba(0,0,0,.4);
 }
-.hero-card-main img{width:100%;height:220px;object-fit:cover;border-radius:var(--r-sm);margin-bottom:1.2rem;}
+
+/* ── MINI SLIDER dentro del card ── */
+.hero-slider{
+  position:relative;width:100%;height:220px;border-radius:var(--r-sm);
+  overflow:hidden;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,#0f2040,#1354a8);
+}
+.hero-slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity .9s var(--ease);
+}
+.hero-slide.active{opacity:1;}
+.hero-slide img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+/* controles del mini slider */
+.hs-dots{
+  position:absolute;bottom:.7rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:.4rem;z-index:3;
+}
+.hs-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,.45);border:none;cursor:pointer;
+  transition:background .2s,transform .2s;
+}
+.hs-dot.active{background:var(--gold);transform:scale(1.25);}
+/* barra de progreso del slider */
+.hs-bar{
+  position:absolute;bottom:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  width:0%;transition:width 4s linear;z-index:3;
+}
+
 .card-service-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;}
 .tag{
   background:rgba(34,114,232,.25);border:1px solid rgba(79,163,247,.3);
@@ -221,21 +264,73 @@ body::before{
 @keyframes floatA{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 @keyframes floatB{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
 
+/* ─── LOGO SHOWCASE BAND ──────────────────────────────────────── */
+/* Franja llamativa entre hero y trust bar con el logo corporativo */
+.logo-band{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 40%, #f9d98a 60%, var(--gold) 100%);
+  padding:1.8rem 2.5rem;
+  display:flex;align-items:center;justify-content:center;gap:2.5rem;
+  flex-wrap:wrap;
+  box-shadow:0 6px 30px rgba(232,161,36,.35);
+}
+.logo-band::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,.06) 0,rgba(255,255,255,.06) 1px,
+    transparent 1px,transparent 80px
+  );
+}
+.logo-band-img-wrap{
+  position:relative;z-index:1;
+  background:var(--white);
+  border-radius:16px;
+  padding:.7rem 1.6rem;
+  box-shadow:0 6px 24px rgba(10,22,40,.18);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-band-img{
+  height:64px;width:auto;max-width:260px;
+  object-fit:contain;display:block;
+}
+.logo-band-text{
+  position:relative;z-index:1;
+  text-align:center;
+}
+.logo-band-text strong{
+  display:block;
+  font-family:var(--ff-head);font-size:clamp(1.15rem,2.5vw,1.6rem);
+  font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.1;
+}
+.logo-band-text span{
+  font-family:var(--ff-body);font-size:.82rem;
+  color:rgba(10,22,40,.65);letter-spacing:.06em;text-transform:uppercase;
+  margin-top:.25rem;display:block;
+}
+.logo-band-divider{
+  width:2px;height:52px;
+  background:rgba(10,22,40,.2);
+  border-radius:2px;
+  flex-shrink:0;
+}
+
 /* ─── CONTACT STRIP ───────────────────────────────────────────── */
 .contact-strip{
-  background:var(--gold);color:var(--navy);
+  background:var(--navy-mid);color:var(--white);
+  border-bottom:3px solid var(--gold);
   padding:1rem 2.5rem;
   display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;
 }
 .contact-strip a{
-  color:var(--navy);text-decoration:none;
-  font-family:var(--ff-head);font-size:.8rem;font-weight:700;letter-spacing:.04em;
+  color:rgba(255,255,255,.8);text-decoration:none;
+  font-family:var(--ff-head);font-size:.8rem;font-weight:600;letter-spacing:.04em;
   display:flex;align-items:center;gap:.5rem;
-  transition:opacity .2s;
+  transition:color .2s;
 }
-.contact-strip a:hover{opacity:.7;}
-.contact-strip i{font-size:.9rem;}
-.strip-sep{width:1px;height:16px;background:rgba(10,22,40,.25);}
+.contact-strip a:hover{color:var(--gold);}
+.contact-strip i{color:var(--gold);font-size:.9rem;}
+.strip-sep{width:1px;height:16px;background:rgba(255,255,255,.15);}
 
 /* ─── MARQUEE / TRUST BAR ─────────────────────────────────────── */
 .trust-bar{
@@ -336,7 +431,7 @@ body::before{
 }
 .svc-card:hover .svc-arrow{gap:.7rem;}
 
-/* ─── PROCESS / HOW WE WORK ───────────────────────────────────── */
+/* ─── PROCESS ─────────────────────────────────────────────────── */
 .process-section{background:var(--navy);color:var(--white);position:relative;overflow:hidden;}
 .process-section::before{
   content:'';position:absolute;right:-200px;top:-200px;
@@ -375,7 +470,6 @@ body::before{
 /* ─── CLIENTS CAROUSEL ────────────────────────────────────────── */
 .clients-section{background:var(--gray-100);padding:6rem 0;}
 .clients-header{text-align:center;margin-bottom:3.5rem;}
-/* main carousel */
 .carousel-wrap{position:relative;}
 .carousel-viewport{overflow:hidden;border-radius:var(--r);}
 .carousel-track{display:flex;transition:transform .55s var(--ease);}
@@ -423,7 +517,6 @@ body::before{
 }
 .slide-author-name{font-family:var(--ff-head);font-size:.88rem;font-weight:700;color:var(--white);}
 .slide-author-role{font-size:.78rem;color:var(--gray-400);}
-/* carousel controls */
 .carousel-controls{display:flex;align-items:center;gap:1rem;margin-top:2rem;justify-content:center;}
 .car-btn{
   width:48px;height:48px;border-radius:50%;border:2px solid rgba(10,22,40,.15);
@@ -442,8 +535,6 @@ body::before{
   position:absolute;bottom:0;left:0;height:3px;background:var(--gold);
   border-radius:0 2px 2px 0;transition:width .4s var(--ease);
 }
-
-/* thumbnail strip */
 .thumb-strip{
   display:flex;gap:1rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap;
 }
@@ -461,7 +552,7 @@ body::before{
   text-transform:uppercase;max-width:70px;line-height:1.2;
 }
 
-/* ─── GALLERY (MASONRY-LIKE) ──────────────────────────────────── */
+/* ─── GALLERY ─────────────────────────────────────────────────── */
 .gallery-section{background:var(--white);}
 .gallery-grid{
   display:grid;
@@ -557,7 +648,13 @@ body::before{
   display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;
   margin-bottom:4rem;
 }
-.footer-brand{}
+/* logo en footer */
+.footer-logo-img{
+  height:52px;width:auto;max-width:200px;
+  object-fit:contain;margin-bottom:.8rem;
+  filter:brightness(0) invert(1);
+  opacity:.9;
+}
 .footer-logo{
   font-family:var(--ff-head);font-size:1.4rem;font-weight:800;color:var(--white);
   letter-spacing:-.02em;margin-bottom:.4rem;display:block;
@@ -643,6 +740,8 @@ body::before{
   .strip-sep{display:none;}
   .section{padding:4.5rem 0;}
   .container{padding:0 1.2rem;}
+  .logo-band{gap:1.2rem;padding:1.3rem 1.2rem;}
+  .logo-band-divider{display:none;}
 }
 @media(max-width:480px){
   .gallery-grid{grid-template-columns:1fr;}
@@ -665,9 +764,14 @@ body::before{
 
 <!-- TOPBAR NAV -->
 <nav class="topbar" id="topbar">
-  <div class="topbar-logo">
-    Gestión Integral
-    <span>Consultorías</span>
+  <div class="topbar-logo-wrap">
+    <!-- LOGO en navbar (se ve blanco sobre fondo oscuro) -->
+    <img src="logo_2.png" alt="Gestión Integral Consultorías" class="topbar-logo-img"
+         onerror="this.style.display='none'">
+    <div class="topbar-logo">
+      Gestión Integral
+      <span>Consultorías</span>
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
@@ -683,17 +787,6 @@ body::before{
     <span></span><span></span><span></span>
   </div>
 </nav>
-
-<!-- CONTACT STRIP -->
-<div class="contact-strip">
-  <a href="tel:3126805599"><i class="fas fa-phone"></i>312 680 5599</a>
-  <div class="strip-sep"></div>
-  <a href="mailto:GestionintegralGHSST@GMAIL.COM"><i class="fas fa-envelope"></i>GestionintegralGHSST@gmail.com</a>
-  <div class="strip-sep"></div>
-  <a href="#"><i class="fas fa-map-marker-alt"></i>Bogotá, Colombia</a>
-  <div class="strip-sep"></div>
-  <a href="#"><i class="fas fa-user-tie"></i>Jhon Jairo Guillen</a>
-</div>
 
 <!-- ═══ HERO ═════════════════════════════════════════════════════ -->
 <section class="hero">
@@ -722,8 +815,32 @@ body::before{
 
     <div class="hero-right">
       <div class="hero-card-main">
-        <img src="image006.webp" alt="Consultoría SG-SST"
-             onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.style.height='220px';this.removeAttribute('src');">
+
+        <!-- ── SLIDER DE IMÁGENES 1, 2, 3 ── -->
+        <div class="hero-slider" id="heroSlider">
+          <div class="hero-slide active">
+            <img src="1.jpeg" alt="Consultoría SG-SST"
+                 onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+          </div>
+          <div class="hero-slide">
+            <img src="2.jpeg" alt="Gestión Humana"
+                 onerror="this.style.background='linear-gradient(135deg,#1354a8,#2272e8)';this.removeAttribute('src');">
+          </div>
+          <div class="hero-slide">
+            <img src="3.jpeg" alt="Nómina y Seguridad Social"
+                 onerror="this.style.background='linear-gradient(135deg,#2272e8,#4fa3f7)';this.removeAttribute('src');">
+          </div>
+          <!-- barra de progreso -->
+          <div class="hs-bar" id="hsBar"></div>
+          <!-- puntos de navegación -->
+          <div class="hs-dots">
+            <button class="hs-dot active" data-s="0"></button>
+            <button class="hs-dot" data-s="1"></button>
+            <button class="hs-dot" data-s="2"></button>
+          </div>
+        </div>
+        <!-- fin slider -->
+
         <div class="card-service-tags">
           <span class="tag">SG-SST</span>
           <span class="tag">Gestión Humana</span>
@@ -743,6 +860,43 @@ body::before{
     </div>
   </div>
 </section>
+
+<!-- ═══ LOGO BAND (posición estratégica: entre hero y contenido) ═ -->
+<!--
+  Esta franja dorada es el primer punto de anclaje visual que el lector
+  ve al hacer scroll. Refuerza la identidad de marca justo antes de
+  conocer los servicios, conectando visualmente el hero con el contenido.
+-->
+<div class="logo-band">
+  <div class="logo-band-img-wrap">
+    <img
+      src="logo_2.png"
+      alt="Gestión Integral Consultorías — Logo"
+      class="logo-band-img"
+      onerror="this.parentElement.style.display='none'">
+  </div>
+  <div class="logo-band-divider"></div>
+  <div class="logo-band-text">
+    <strong>Gestión Integral Consultorías</strong>
+    <span>SG-SST · Gestión Humana · Nómina · Seguridad Social</span>
+  </div>
+  <div class="logo-band-divider"></div>
+  <div class="logo-band-text">
+    <strong style="font-size:1.05rem;color:rgba(10,22,40,.85);">+10 años · +200 empresas</strong>
+    <span>Bogotá, Colombia</span>
+  </div>
+</div>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <a href="tel:3126805599"><i class="fas fa-phone"></i>312 680 5599</a>
+  <div class="strip-sep"></div>
+  <a href="mailto:GestionintegralGHSST@GMAIL.COM"><i class="fas fa-envelope"></i>GestionintegralGHSST@gmail.com</a>
+  <div class="strip-sep"></div>
+  <a href="#"><i class="fas fa-map-marker-alt"></i>Bogotá, Colombia</a>
+  <div class="strip-sep"></div>
+  <a href="#"><i class="fas fa-user-tie"></i>Jhon Jairo Guillen</a>
+</div>
 
 <!-- TRUST MARQUEE -->
 <div class="trust-bar">
@@ -767,7 +921,7 @@ body::before{
     <div class="trust-dot"></div>
     <div class="trust-item"><i class="fas fa-building"></i>Bogotá, Colombia</div>
     <div class="trust-dot"></div>
-    <!-- duplicado para loop infinito -->
+    <!-- duplicado para loop -->
     <div class="trust-item"><i class="fas fa-hard-hat"></i>SG-SST</div>
     <div class="trust-dot"></div>
     <div class="trust-item"><i class="fas fa-users"></i>Gestión Humana</div>
@@ -911,7 +1065,6 @@ body::before{
     </div>
 
     <div class="carousel-wrap reveal reveal-d2">
-      <!-- progress bar -->
       <div style="position:relative;height:3px;background:rgba(10,22,40,.1);border-radius:2px;margin-bottom:1.5rem;">
         <div class="car-progress" id="car-progress" style="width:33.3%"></div>
       </div>
@@ -919,7 +1072,6 @@ body::before{
       <div class="carousel-viewport">
         <div class="carousel-track" id="car-track">
 
-          <!-- Slide 1 -->
           <div class="slide active" id="slide-0">
             <div class="slide-img">
               <img src="image006.webp" alt="Portaltex SAS"
@@ -945,10 +1097,9 @@ body::before{
             </div>
           </div>
 
-          <!-- Slide 2 -->
           <div class="slide" id="slide-1">
             <div class="slide-img">
-              <img src="image009.webp" alt="Empresa Gestión Humana"
+              <img src="image009.webp" alt="Corporación DEF"
                    onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
             </div>
             <div class="slide-info">
@@ -970,7 +1121,6 @@ body::before{
             </div>
           </div>
 
-          <!-- Slide 3 -->
           <div class="slide" id="slide-2">
             <div class="slide-img">
               <img src="image036.webp" alt="STIHL Colombia"
@@ -996,10 +1146,9 @@ body::before{
             </div>
           </div>
 
-        </div><!-- /track -->
-      </div><!-- /viewport -->
+        </div>
+      </div>
 
-      <!-- Controls -->
       <div class="carousel-controls">
         <button class="car-btn" id="car-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
         <div class="car-dots" id="car-dots">
@@ -1010,31 +1159,27 @@ body::before{
         <button class="car-btn" id="car-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
       </div>
 
-      <!-- Thumbnail strip -->
       <div class="thumb-strip" id="thumb-strip">
         <div style="text-align:center;">
           <div class="thumb active" data-idx="0">
-            <img src="image006.webp" alt="Portaltex"
-                 onerror="this.style.background='#1354a8';this.removeAttribute('src');">
+            <img src="image006.webp" alt="Portaltex" onerror="this.style.background='#1354a8';this.removeAttribute('src');">
           </div>
           <div class="thumb-label">Portaltex</div>
         </div>
         <div style="text-align:center;">
           <div class="thumb" data-idx="1">
-            <img src="image009.webp" alt="Corporación DEF"
-                 onerror="this.style.background='#1354a8';this.removeAttribute('src');">
+            <img src="image009.webp" alt="Corporación DEF" onerror="this.style.background='#1354a8';this.removeAttribute('src');">
           </div>
           <div class="thumb-label">Corp. DEF</div>
         </div>
         <div style="text-align:center;">
           <div class="thumb" data-idx="2">
-            <img src="image036.webp" alt="STIHL"
-                 onerror="this.style.background='#1354a8';this.removeAttribute('src');">
+            <img src="image036.webp" alt="STIHL" onerror="this.style.background='#1354a8';this.removeAttribute('src');">
           </div>
           <div class="thumb-label">STIHL S.A.</div>
         </div>
       </div>
-    </div><!-- /carousel-wrap -->
+    </div>
   </div>
 </section>
 
@@ -1136,7 +1281,7 @@ body::before{
 <div class="cta-band">
   <div class="container">
     <h2 class="reveal">¿Listo para transformar<br>tu gestión empresarial?</h2>
-    <p class="reveal reveal-d1">Habla hoy con nuestro equipo y recibe una diagnóstico inicial sin costo.</p>
+    <p class="reveal reveal-d1">Habla hoy con nuestro equipo y recibe un diagnóstico inicial sin costo.</p>
     <a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20quiero%20recibir%20un%20diagn%C3%B3stico%20gratuito%20de%20mis%20procesos." class="btn-hero-primary reveal reveal-d2" target="_blank">
       <i class="fab fa-whatsapp"></i>Solicitar diagnóstico gratuito
     </a>
@@ -1148,6 +1293,9 @@ body::before{
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
+        <!-- LOGO en footer -->
+        <img src="logo_2.png" alt="Gestión Integral Consultorías" class="footer-logo-img"
+             onerror="this.style.display='none'">
         <span class="footer-logo">Gestión Integral</span>
         <span class="footer-logo-sub">Consultorías</span>
         <p>Expertos en SG-SST, Gestión Humana, Seguridad Social y Nómina. Más de 10 años respaldando el crecimiento responsable de empresas colombianas.</p>
@@ -1210,46 +1358,132 @@ body::before{
 
 <!-- ─── SCRIPTS ───────────────────────────────────────────────── -->
 <script>
-/* Custom cursor */
+/* ── Custom cursor ── */
 const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=window.innerWidth/2, my=window.innerHeight/2;
-let rx=mx, ry=my;
-document.addEventListener('mousemove', e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
-function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+const ring   = document.getElementById('cursor-ring');
+let mx = window.innerWidth/2, my = window.innerHeight/2;
+let rx = mx, ry = my;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+});
+function animRing(){
+  rx += (mx-rx)*.12; ry += (my-ry)*.12;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animRing);
+}
 animRing();
-document.querySelectorAll('a,button,.svc-card,.g-item,.thumb').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursor.style.width='16px';cursor.style.height='16px';ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='var(--gold)';});
-  el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='var(--sky)';});
-});
-
-/* Topbar scroll */
-const topbar = document.getElementById('topbar');
-window.addEventListener('scroll',()=>{
-  topbar.classList.toggle('scrolled', window.scrollY > 80);
-});
-
-/* Smooth scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+document.querySelectorAll('a,button,.svc-card,.g-item,.thumb,.hero-slider').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width='16px'; cursor.style.height='16px';
+    ring.style.width='56px';  ring.style.height='56px';
+    ring.style.borderColor='var(--gold)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width='10px'; cursor.style.height='10px';
+    ring.style.width='38px';  ring.style.height='38px';
+    ring.style.borderColor='var(--sky)';
   });
 });
 
-/* Reveal on scroll */
-const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver(entries=>{
-  entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');});
-},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-revealEls.forEach(el=>revealObs.observe(el));
+/* ── Topbar scroll ── */
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll', () => {
+  topbar.classList.toggle('scrolled', window.scrollY > 80);
+});
 
-/* ─ Clients Carousel ─ */
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+});
+
+/* ── Reveal on scroll ── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(en => { if(en.isIntersecting) en.target.classList.add('in'); });
+}, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ══ HERO SLIDER (imágenes 1, 2, 3) ══ */
 (function(){
-  const track = document.getElementById('car-track');
-  const slides = track.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.car-dot');
-  const thumbs = document.querySelectorAll('.thumb');
+  const slides  = document.querySelectorAll('.hero-slide');
+  const dots    = document.querySelectorAll('.hs-dot');
+  const bar     = document.getElementById('hsBar');
+  let cur = 0;
+  const TOTAL = slides.length;
+  const INTERVAL = 4000; // 4 segundos por imagen
+  let timer, barTimer;
+
+  function startBar(){
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    // forzar reflow
+    bar.offsetWidth;
+    bar.style.transition = 'width ' + INTERVAL + 'ms linear';
+    bar.style.width = '100%';
+  }
+
+  function goTo(idx){
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (idx + TOTAL) % TOTAL;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    startBar();
+  }
+
+  function next(){ goTo(cur + 1); }
+
+  function startAuto(){
+    clearInterval(timer);
+    timer = setInterval(next, INTERVAL);
+    startBar();
+  }
+
+  // Inicializar
+  startAuto();
+
+  // Clicks en dots
+  dots.forEach(d => {
+    d.addEventListener('click', () => {
+      goTo(+d.dataset.s);
+      clearInterval(timer);
+      timer = setInterval(next, INTERVAL);
+    });
+  });
+
+  // Swipe en el slider
+  const slider = document.getElementById('heroSlider');
+  let sx = 0;
+  slider.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
+  slider.addEventListener('touchend', e => {
+    const dx = sx - e.changedTouches[0].clientX;
+    if(Math.abs(dx) > 40){
+      goTo(dx > 0 ? cur+1 : cur-1);
+      clearInterval(timer);
+      timer = setInterval(next, INTERVAL);
+    }
+  });
+
+  // Pausa on hover
+  slider.addEventListener('mouseenter', () => {
+    clearInterval(timer);
+    bar.style.transition = 'none';
+  });
+  slider.addEventListener('mouseleave', () => {
+    startAuto();
+  });
+})();
+
+/* ══ CLIENTS CAROUSEL ══ */
+(function(){
+  const track    = document.getElementById('car-track');
+  const slides   = track.querySelectorAll('.slide');
+  const dots     = document.querySelectorAll('.car-dot');
+  const thumbs   = document.querySelectorAll('.thumb');
   const progress = document.getElementById('car-progress');
   let current = 0;
   const total = slides.length;
@@ -1259,28 +1493,28 @@ revealEls.forEach(el=>revealObs.observe(el));
     current = (idx + total) % total;
     slides[current].classList.add('active');
     track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d,i)=>d.classList.toggle('active', i===current));
-    thumbs.forEach((t,i)=>t.classList.toggle('active', i===current));
+    dots.forEach((d,i)   => d.classList.toggle('active', i===current));
+    thumbs.forEach((t,i) => t.classList.toggle('active', i===current));
     progress.style.width = ((current+1)/total*100)+'%';
   }
 
-  document.getElementById('car-next').addEventListener('click',()=>goTo(current+1));
-  document.getElementById('car-prev').addEventListener('click',()=>goTo(current-1));
-  dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.idx)));
-  thumbs.forEach(t=>t.addEventListener('click',()=>goTo(+t.dataset.idx)));
+  document.getElementById('car-next').addEventListener('click', () => goTo(current+1));
+  document.getElementById('car-prev').addEventListener('click', () => goTo(current-1));
+  dots.forEach(d   => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+  thumbs.forEach(t => t.addEventListener('click', () => goTo(+t.dataset.idx)));
 
-  // Touch swipe
-  let sx=0;
-  track.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
-  track.addEventListener('touchend',e=>{
-    const dx=sx-e.changedTouches[0].clientX;
-    if(Math.abs(dx)>50) goTo(dx>0?current+1:current-1);
+  let sx = 0;
+  track.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => {
+    const dx = sx - e.changedTouches[0].clientX;
+    if(Math.abs(dx) > 50) goTo(dx > 0 ? current+1 : current-1);
   });
 
-  // Auto-advance
-  let auto = setInterval(()=>goTo(current+1), 6000);
-  track.closest('.carousel-wrap').addEventListener('mouseenter',()=>clearInterval(auto));
-  track.closest('.carousel-wrap').addEventListener('mouseleave',()=>{auto=setInterval(()=>goTo(current+1),6000);});
+  let auto = setInterval(() => goTo(current+1), 6000);
+  track.closest('.carousel-wrap').addEventListener('mouseenter', () => clearInterval(auto));
+  track.closest('.carousel-wrap').addEventListener('mouseleave', () => {
+    auto = setInterval(() => goTo(current+1), 6000);
+  });
 })();
 </script>
 </body>
