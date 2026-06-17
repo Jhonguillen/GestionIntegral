@@ -1,1499 +1,1287 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión Integral Consultorías | Expertos en SG-SST, Gestión Humana y Seguridad Social</title>
-    <meta name="description" content="Consultoría especializada en Seguridad y Salud en el Trabajo, Gestión Humana Estratégica, Seguridad Social Integral y Gestión de Nómina. Soluciones integrales para tu empresa.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión Integral Consultorías | SG-SST · Gestión Humana · Nómina · Seguridad Social</title>
+<meta name="description" content="Consultoría especializada en Seguridad y Salud en el Trabajo, Gestión Humana Estratégica, Seguridad Social Integral y Gestión de Nómina en Bogotá, Colombia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-        :root {
-            --primary-blue: #1e3a8a;
-            --secondary-blue: #3b82f6;
-            --light-blue: #60a5fa;
-            --dark-blue: #1e40af;
-            --accent-blue: #2563eb;
-            
-            --primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-            --secondary-gradient: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-            --hero-gradient: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.9) 50%, rgba(96, 165, 250, 0.85) 100%);
-            --dark-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            
-            --text-dark: #1e293b;
-            --text-light: #ffffff;
-            --text-muted: #64748b;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --shadow-light: 0 10px 30px rgba(30, 58, 138, 0.1);
-            --shadow-medium: 0 15px 40px rgba(30, 58, 138, 0.15);
-            --shadow-heavy: 0 20px 50px rgba(30, 58, 138, 0.2);
-            --shadow-floating: 0 25px 60px rgba(30, 58, 138, 0.3);
-            
-            --border-radius: 16px;
-            --border-radius-small: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+/* ─── DESIGN TOKENS ───────────────────────────────────────────── */
+:root {
+  --navy:       #0a1628;
+  --navy-mid:   #0f2040;
+  --blue:       #1354a8;
+  --blue-bright:#2272e8;
+  --sky:        #4fa3f7;
+  --gold:       #e8a124;
+  --gold-light: #f5c563;
+  --cream:      #f7f4ef;
+  --white:      #ffffff;
+  --gray-100:   #f1f4f8;
+  --gray-400:   #94a3b8;
+  --gray-600:   #475569;
+  --gray-800:   #1e293b;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  --ff-head: 'Syne', sans-serif;
+  --ff-serif:'DM Serif Display', serif;
+  --ff-body: 'DM Sans', sans-serif;
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* Header Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: var(--hero-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-/* Logo en Contact Bar */
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+  --r: 20px;
+  --r-sm: 10px;
 }
 
-.contact-logo {
-    height: 40px;
-    width: auto;
-    transition: var(--transition);
+/* ─── RESET ───────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--ff-body);background:var(--white);color:var(--gray-800);overflow-x:hidden;cursor:none;}
+
+/* ─── CUSTOM CURSOR ───────────────────────────────────────────── */
+.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
+.cursor-ring{position:fixed;width:38px;height:38px;border:2px solid var(--sky);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s var(--ease),width .2s,height .2s,opacity .2s;opacity:.7;}
+body:hover .cursor{opacity:1;}
+
+/* ─── NOISE TEXTURE OVERLAY ───────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9997;opacity:.4;
 }
 
-.contact-logo:hover {
-    transform: scale(1.05);
+/* ─── STICKY TOPBAR ───────────────────────────────────────────── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2.5rem;
+  background:rgba(10,22,40,0);
+  backdrop-filter:blur(0px);
+  transition:background .4s var(--ease),backdrop-filter .4s var(--ease),box-shadow .4s;
+}
+.topbar.scrolled{
+  background:rgba(10,22,40,.92);
+  backdrop-filter:blur(18px);
+  box-shadow:0 2px 30px rgba(0,0,0,.35);
+}
+.topbar-logo{
+  font-family:var(--ff-head);font-weight:800;font-size:1.15rem;
+  color:var(--white);letter-spacing:-.02em;line-height:1.1;
+  display:flex;flex-direction:column;gap:0;
+}
+.topbar-logo span{color:var(--gold);font-size:.7rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  color:rgba(255,255,255,.75);text-decoration:none;
+  font-family:var(--ff-head);font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  transition:color .2s;
+  position:relative;
+}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease);}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  background:var(--gold);color:var(--navy);
+  font-family:var(--ff-head);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.55rem 1.3rem;border-radius:50px;text-decoration:none;
+  transition:background .2s,transform .2s;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:24px;height:2px;background:white;border-radius:2px;transition:.3s;}
+
+/* ─── HERO ────────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--navy);overflow:hidden;
+}
+/* animated mesh */
+.hero-mesh{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 85%, rgba(19,84,168,.55) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(34,114,232,.4) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(79,163,247,.12) 0%, transparent 60%);
+  animation:meshPulse 9s ease-in-out infinite alternate;
+}
+@keyframes meshPulse{
+  from{transform:scale(1) rotate(0deg);}
+  to{transform:scale(1.06) rotate(.8deg);}
+}
+.hero-lines{
+  position:absolute;inset:0;overflow:hidden;
+  background:repeating-linear-gradient(
+    -45deg,
+    transparent,transparent 60px,
+    rgba(255,255,255,.018) 60px,
+    rgba(255,255,255,.018) 61px
+  );
+}
+/* gold accent bar */
+.hero-accent-bar{
+  position:absolute;left:0;top:0;bottom:0;width:5px;
+  background:linear-gradient(180deg,transparent 0%,var(--gold) 30%,var(--gold-light) 70%,transparent 100%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;padding:6rem 2.5rem 4rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(232,161,36,.15);border:1px solid rgba(232,161,36,.3);
+  padding:.35rem .9rem;border-radius:50px;
+  font-family:var(--ff-head);font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:1.5rem;animation:fadeSlideUp .7s var(--ease) both;
+}
+.hero-badge i{font-size:.75rem;}
+.hero-title{
+  font-family:var(--ff-head);font-size:clamp(2.6rem,4.5vw,4.2rem);
+  font-weight:800;color:var(--white);line-height:1.05;letter-spacing:-.03em;
+  animation:fadeSlideUp .7s var(--ease) .1s both;
+}
+.hero-title .accent{color:var(--gold);}
+.hero-title .italic{font-family:var(--ff-serif);font-weight:400;color:var(--sky);font-style:italic;}
+.hero-desc{
+  margin-top:1.5rem;font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.7);
+  max-width:480px;animation:fadeSlideUp .7s var(--ease) .2s both;
+}
+.hero-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.2rem;
+  animation:fadeSlideUp .7s var(--ease) .3s both;
+}
+.btn-hero-primary{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gold);color:var(--navy);
+  font-family:var(--ff-head);font-size:.88rem;font-weight:700;letter-spacing:.04em;
+  padding:.85rem 1.8rem;border-radius:50px;text-decoration:none;
+  box-shadow:0 8px 30px rgba(232,161,36,.35);
+  transition:transform .2s,box-shadow .2s,background .2s;
+}
+.btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(232,161,36,.5);background:var(--gold-light);}
+.btn-hero-secondary{
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:2px solid rgba(255,255,255,.25);color:var(--white);
+  font-family:var(--ff-head);font-size:.88rem;font-weight:600;
+  padding:.85rem 1.8rem;border-radius:50px;text-decoration:none;
+  backdrop-filter:blur(8px);background:rgba(255,255,255,.06);
+  transition:border-color .2s,background .2s,transform .2s;
+}
+.btn-hero-secondary:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1);transform:translateY(-3px);}
+.hero-stats{
+  display:flex;gap:2rem;margin-top:3rem;
+  animation:fadeSlideUp .7s var(--ease) .4s both;
+}
+.hero-stat{border-left:2px solid rgba(232,161,36,.4);padding-left:1rem;}
+.hero-stat strong{display:block;font-family:var(--ff-head);font-size:1.9rem;font-weight:800;color:var(--white);}
+.hero-stat span{font-size:.8rem;color:var(--gray-400);letter-spacing:.05em;text-transform:uppercase;}
+
+/* hero right side: featured card stack */
+.hero-right{
+  position:relative;animation:fadeSlideUp .8s var(--ease) .2s both;
+}
+.hero-card-main{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r);backdrop-filter:blur(16px);
+  padding:2rem;
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
+}
+.hero-card-main img{width:100%;height:220px;object-fit:cover;border-radius:var(--r-sm);margin-bottom:1.2rem;}
+.card-service-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;}
+.tag{
+  background:rgba(34,114,232,.25);border:1px solid rgba(79,163,247,.3);
+  color:var(--sky);font-family:var(--ff-head);font-size:.68rem;font-weight:700;
+  padding:.25rem .7rem;border-radius:50px;letter-spacing:.08em;text-transform:uppercase;
+}
+.tag.gold{background:rgba(232,161,36,.2);border-color:rgba(232,161,36,.35);color:var(--gold);}
+.hero-card-main h4{font-family:var(--ff-head);color:var(--white);font-size:1rem;font-weight:700;margin-bottom:.4rem;}
+.hero-card-main p{color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.6;}
+
+/* floating mini cards */
+.hero-float-card{
+  position:absolute;background:var(--white);border-radius:var(--r-sm);
+  padding:.9rem 1.1rem;box-shadow:0 15px 40px rgba(0,0,0,.3);
+  display:flex;align-items:center;gap:.75rem;min-width:180px;
+}
+.hero-float-card .fc-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;flex-shrink:0;
+}
+.hero-float-card .fc-icon.blue{background:rgba(19,84,168,.15);color:var(--blue-bright);}
+.hero-float-card .fc-icon.gold{background:rgba(232,161,36,.15);color:var(--gold);}
+.hero-float-card strong{display:block;font-family:var(--ff-head);font-size:.8rem;color:var(--navy);font-weight:700;line-height:1.2;}
+.hero-float-card span{font-size:.7rem;color:var(--gray-400);}
+.fc-top{top:-18px;right:20px;animation:floatA 5s ease-in-out infinite;}
+.fc-bottom{bottom:-18px;left:-10px;animation:floatB 6s ease-in-out infinite;}
+@keyframes floatA{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@keyframes floatB{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+
+/* ─── CONTACT STRIP ───────────────────────────────────────────── */
+.contact-strip{
+  background:var(--gold);color:var(--navy);
+  padding:1rem 2.5rem;
+  display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+}
+.contact-strip a{
+  color:var(--navy);text-decoration:none;
+  font-family:var(--ff-head);font-size:.8rem;font-weight:700;letter-spacing:.04em;
+  display:flex;align-items:center;gap:.5rem;
+  transition:opacity .2s;
+}
+.contact-strip a:hover{opacity:.7;}
+.contact-strip i{font-size:.9rem;}
+.strip-sep{width:1px;height:16px;background:rgba(10,22,40,.25);}
+
+/* ─── MARQUEE / TRUST BAR ─────────────────────────────────────── */
+.trust-bar{
+  background:var(--navy-mid);padding:1.2rem 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.trust-track{
+  display:flex;gap:3rem;align-items:center;
+  animation:marquee 22s linear infinite;
+  white-space:nowrap;width:max-content;
+}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.trust-item{
+  display:flex;align-items:center;gap:.7rem;
+  color:rgba(255,255,255,.4);font-family:var(--ff-head);font-size:.75rem;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;
+}
+.trust-item i{color:var(--gold);font-size:.8rem;}
+.trust-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0;}
+
+/* ─── SECTION COMMONS ─────────────────────────────────────────── */
+.section{padding:7rem 0;}
+.container{max-width:1280px;margin:0 auto;padding:0 2.5rem;}
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--ff-head);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--blue-bright);margin-bottom:1rem;
+}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);border-radius:2px;}
+.section-title{
+  font-family:var(--ff-head);font-size:clamp(2rem,3.5vw,2.9rem);
+  font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem;
+}
+.section-title .italic{font-family:var(--ff-serif);font-style:italic;font-weight:400;color:var(--blue);}
+.section-sub{font-size:1.05rem;color:var(--gray-600);max-width:540px;line-height:1.7;}
+
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(28px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.1s;}
+.reveal-d2{transition-delay:.2s;}
+.reveal-d3{transition-delay:.3s;}
+.reveal-d4{transition-delay:.4s;}
+
+/* ─── SERVICES ────────────────────────────────────────────────── */
+.services-bg{background:var(--cream);}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap;}
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;
+}
+.svc-card{
+  background:var(--white);border-radius:var(--r);padding:2.2rem;
+  border:1px solid rgba(10,22,40,.08);
+  box-shadow:0 4px 20px rgba(10,22,40,.05);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+  position:relative;overflow:hidden;cursor:default;
+}
+.svc-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(19,84,168,.04) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.svc-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--sky));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(10,22,40,.13);border-color:rgba(19,84,168,.15);}
+.svc-card:hover::before{opacity:1;}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-num{
+  font-family:var(--ff-head);font-size:3.5rem;font-weight:800;
+  color:rgba(19,84,168,.08);line-height:1;margin-bottom:.5rem;letter-spacing:-.04em;
+}
+.svc-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue-bright) 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);font-size:1.15rem;margin-bottom:1.3rem;
+  box-shadow:0 6px 20px rgba(19,84,168,.3);
+  transition:transform .3s;
+}
+.svc-card:hover .svc-icon{transform:scale(1.1) rotate(-4deg);}
+.svc-title{font-family:var(--ff-head);font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;}
+.svc-desc{color:var(--gray-600);font-size:.92rem;line-height:1.7;margin-bottom:1.3rem;}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.svc-list li{font-size:.85rem;color:var(--gray-600);display:flex;align-items:flex-start;gap:.6rem;}
+.svc-list li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:.05rem;}
+.svc-arrow{
+  margin-top:1.5rem;display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--ff-head);font-size:.78rem;font-weight:700;color:var(--blue-bright);letter-spacing:.05em;text-transform:uppercase;
+  text-decoration:none;
+  transition:gap .2s;
+}
+.svc-card:hover .svc-arrow{gap:.7rem;}
+
+/* ─── PROCESS / HOW WE WORK ───────────────────────────────────── */
+.process-section{background:var(--navy);color:var(--white);position:relative;overflow:hidden;}
+.process-section::before{
+  content:'';position:absolute;right:-200px;top:-200px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,114,232,.15) 0%,transparent 65%);
+}
+.process-section .section-title{color:var(--white);}
+.process-section .section-sub{color:rgba(255,255,255,.6);}
+.process-section .section-eyebrow{color:var(--sky);}
+.process-header{max-width:520px;margin-bottom:4rem;}
+.process-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;
+  counter-reset:steps;
+}
+.process-step{
+  position:relative;padding:2rem;
+  border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+  background:rgba(255,255,255,.03);
+  transition:border-color .3s,background .3s;
+}
+.process-step:hover{border-color:rgba(79,163,247,.3);background:rgba(255,255,255,.06);}
+.process-step::before{
+  counter-increment:steps;content:counter(steps,decimal-leading-zero);
+  font-family:var(--ff-head);font-size:3rem;font-weight:800;
+  color:rgba(255,255,255,.07);line-height:1;display:block;margin-bottom:1rem;
+}
+.process-step-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:rgba(34,114,232,.25);border:1px solid rgba(79,163,247,.25);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--sky);font-size:1.05rem;margin-bottom:1rem;
+}
+.process-step h4{font-family:var(--ff-head);font-size:.98rem;font-weight:700;color:var(--white);margin-bottom:.6rem;}
+.process-step p{color:rgba(255,255,255,.55);font-size:.87rem;line-height:1.65;}
+
+/* ─── CLIENTS CAROUSEL ────────────────────────────────────────── */
+.clients-section{background:var(--gray-100);padding:6rem 0;}
+.clients-header{text-align:center;margin-bottom:3.5rem;}
+/* main carousel */
+.carousel-wrap{position:relative;}
+.carousel-viewport{overflow:hidden;border-radius:var(--r);}
+.carousel-track{display:flex;transition:transform .55s var(--ease);}
+.slide{
+  min-width:100%;display:grid;grid-template-columns:1fr 1fr;
+  border-radius:var(--r);overflow:hidden;
+  box-shadow:0 20px 60px rgba(10,22,40,.14);
+}
+.slide-img{position:relative;height:420px;overflow:hidden;}
+.slide-img img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease;}
+.carousel-track .active .slide-img img{transform:scale(1.06);}
+.slide-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 50%,rgba(10,22,40,.05) 100%),
+             linear-gradient(to top,rgba(10,22,40,.5) 0%,transparent 50%);
+}
+.slide-info{
+  background:var(--navy);padding:3rem 2.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.slide-category{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(232,161,36,.15);border:1px solid rgba(232,161,36,.25);
+  padding:.3rem .8rem;border-radius:50px;width:fit-content;margin-bottom:1.5rem;
+  font-family:var(--ff-head);font-size:.68rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;
+}
+.slide-info h3{font-family:var(--ff-head);font-size:1.5rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.slide-info p{color:rgba(255,255,255,.65);font-size:.92rem;line-height:1.7;margin-bottom:1.5rem;}
+.slide-quote{
+  border-left:2px solid var(--gold);padding-left:1rem;
+  font-family:var(--ff-serif);font-style:italic;font-size:1rem;
+  color:rgba(255,255,255,.85);line-height:1.6;margin-bottom:1.5rem;
+}
+.slide-author{display:flex;align-items:center;gap:.9rem;}
+.slide-avatar{
+  width:46px;height:46px;border-radius:50%;
+  object-fit:cover;border:2px solid rgba(232,161,36,.4);
+}
+.slide-avatar-placeholder{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--sky));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-family:var(--ff-head);font-weight:700;font-size:.95rem;
+  border:2px solid rgba(232,161,36,.4);flex-shrink:0;
+}
+.slide-author-name{font-family:var(--ff-head);font-size:.88rem;font-weight:700;color:var(--white);}
+.slide-author-role{font-size:.78rem;color:var(--gray-400);}
+/* carousel controls */
+.carousel-controls{display:flex;align-items:center;gap:1rem;margin-top:2rem;justify-content:center;}
+.car-btn{
+  width:48px;height:48px;border-radius:50%;border:2px solid rgba(10,22,40,.15);
+  background:var(--white);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1rem;transition:background .2s,border-color .2s,transform .2s;
+}
+.car-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);transform:scale(1.08);}
+.car-dots{display:flex;gap:.5rem;}
+.car-dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(10,22,40,.2);
+  border:none;cursor:pointer;transition:background .2s,transform .2s,width .3s;
+}
+.car-dot.active{background:var(--navy);width:24px;border-radius:4px;}
+.car-progress{
+  position:absolute;bottom:0;left:0;height:3px;background:var(--gold);
+  border-radius:0 2px 2px 0;transition:width .4s var(--ease);
 }
 
-/* Ajustes para el contact-content con logo */
-.contact-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-    padding: 0 2rem;
+/* thumbnail strip */
+.thumb-strip{
+  display:flex;gap:1rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap;
+}
+.thumb{
+  width:70px;height:50px;border-radius:8px;overflow:hidden;
+  border:2px solid transparent;cursor:pointer;flex-shrink:0;
+  transition:border-color .2s,transform .2s,opacity .2s;opacity:.55;
+}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.thumb.active{border-color:var(--gold);opacity:1;transform:scale(1.05);}
+.thumb:hover{opacity:.8;}
+.thumb-label{
+  font-family:var(--ff-head);font-size:.65rem;font-weight:700;
+  color:var(--gray-600);text-align:center;margin-top:.3rem;letter-spacing:.04em;
+  text-transform:uppercase;max-width:70px;line-height:1.2;
 }
 
-/* Responsive para el logo */
-@media (max-width: 768px) {
-    .contact-logo {
-        height: 35px;
-    }
-    
-    .contact-content {
-        gap: 1.5rem;
-    }
-    
-    .logo-container {
-        order: -1; /* Coloca el logo primero en móviles */
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
+/* ─── GALLERY (MASONRY-LIKE) ──────────────────────────────────── */
+.gallery-section{background:var(--white);}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto;gap:1.2rem;
+  margin-top:3rem;
 }
-
-@media (max-width: 480px) {
-    .contact-logo {
-        height: 30px;
-    }
-    
-    .contact-content {
-        gap: 1rem;
-    }
+.g-item{
+  border-radius:var(--r-sm);overflow:hidden;position:relative;
+  cursor:pointer;
 }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(96, 165, 250, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 30%, rgba(30, 58, 138, 0.3) 0%, transparent 50%);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(0.5deg); }
-        }
-
-        .hero-content {
-            text-align: center;
-            color: var(--text-light);
-            max-width: 900px;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            animation: slideInDown 1s ease-out;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            font-weight: 400;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            animation: slideInUp 1s ease-out 0.3s both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeIn 1s ease-out 0.6s both;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-            cursor: pointer;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: var(--text-light);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* Carrusel Section Flotante */
-        .carousel-section {
-            padding: 2rem 0;
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            animation: fadeIn 1s ease-out 0.9s both;
-        }
-
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-floating);
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: translateY(0);
-            transition: var(--transition);
-        }
-
-        .carousel-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 70px rgba(30, 58, 138, 0.4);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            height: 350px;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(30, 58, 138, 0.95));
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .carousel-caption h3 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .carousel-caption p {
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.25);
-            border: none;
-            color: var(--text-light);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            z-index: 10;
-            font-size: 1.2rem;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-50%) scale(1.15);
-        }
-
-        .carousel-prev {
-            left: 25px;
-        }
-
-        .carousel-next {
-            right: 25px;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 2rem;
-        }
-
-        .carousel-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .carousel-dot.active {
-            background: var(--text-light);
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .carousel-dot:hover {
-            background: rgba(255, 255, 255, 0.7);
-            transform: scale(1.2);
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: var(--transition);
-            transform: translateY(-100%);
-            border-bottom: 1px solid rgba(30, 58, 138, 0.1);
-        }
-
-        .navbar.visible {
-            transform: translateY(0);
-        }
-
-        .navbar-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Contact Bar */
-.contact-bar {
-    background: var(--dark-gradient);
-    color: var(--text-light);
-    padding: 1rem 0;
-    position: relative;
-    overflow: hidden;
+.g-item:nth-child(1){grid-column:span 2;height:300px;}
+.g-item:nth-child(2){height:300px;}
+.g-item:nth-child(3){height:240px;}
+.g-item:nth-child(4){height:240px;}
+.g-item:nth-child(5){grid-column:span 1;height:240px;}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.g-item:hover img{transform:scale(1.07);}
+.g-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,22,40,.85) 0%,transparent 55%);
+  opacity:0;transition:opacity .3s;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;
 }
-
-.contact-bar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
-    animation: shimmer 4s infinite;
+.g-item:hover .g-overlay{opacity:1;}
+.g-overlay h4{font-family:var(--ff-head);font-size:.9rem;font-weight:700;color:var(--white);}
+.g-overlay p{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.2rem;}
+.g-badge{
+  position:absolute;top:.8rem;right:.8rem;
+  background:var(--gold);color:var(--navy);
+  font-family:var(--ff-head);font-size:.62rem;font-weight:700;
+  padding:.2rem .6rem;border-radius:50px;letter-spacing:.08em;text-transform:uppercase;
+  opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;
 }
+.g-item:hover .g-badge{opacity:1;transform:none;}
 
-@keyframes shimmer {
-    0% { left: -100%; }
-    100% { left: 100%; }
+/* ─── WHY US ──────────────────────────────────────────────────── */
+.why-section{background:var(--cream);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.why-visual{position:relative;}
+.why-img-main{
+  width:100%;border-radius:var(--r);
+  box-shadow:0 30px 70px rgba(10,22,40,.2);
+  height:420px;object-fit:cover;
 }
-
-.contact-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-    padding: 0 2rem;
+.why-img-float{
+  position:absolute;bottom:-24px;right:-24px;
+  width:180px;height:140px;border-radius:var(--r-sm);
+  object-fit:cover;border:4px solid var(--white);
+  box-shadow:0 15px 40px rgba(10,22,40,.2);
 }
-
-/* Logo en Contact Bar */
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.why-badge-float{
+  position:absolute;top:-16px;left:-16px;
+  background:var(--navy);color:var(--white);
+  border-radius:var(--r-sm);padding:1.2rem 1.5rem;
+  box-shadow:0 15px 40px rgba(10,22,40,.25);
+  text-align:center;
 }
-
-.contact-logo {
-    height: 40px;
-    width: auto;
+.why-badge-float strong{font-family:var(--ff-head);font-size:2rem;font-weight:800;color:var(--gold);}
+.why-badge-float span{display:block;font-size:.72rem;color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;}
+.why-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;}
+.why-item{display:flex;gap:1rem;align-items:flex-start;}
+.why-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--blue-bright));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);font-size:1rem;
+  box-shadow:0 5px 16px rgba(19,84,168,.25);
 }
+.why-item h4{font-family:var(--ff-head);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.why-item p{font-size:.88rem;color:var(--gray-600);line-height:1.6;}
 
-.contact-logo:hover {
-    transform: scale(1.05);
+/* ─── CTA BAND ────────────────────────────────────────────────── */
+.cta-band{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);
+  padding:5rem 0;text-align:center;position:relative;overflow:hidden;
 }
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-weight: 500;
-    transition: var(--transition);
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(79,163,247,.15) 0%,transparent 65%);
 }
-
-.contact-item:hover {
-    transform: translateY(-2px);
+.cta-band h2{
+  font-family:var(--ff-head);font-size:clamp(1.8rem,3vw,2.8rem);
+  font-weight:800;color:var(--white);margin-bottom:1rem;letter-spacing:-.02em;
+  position:relative;
 }
+.cta-band p{color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:2.2rem;position:relative;}
+.cta-band .btn-hero-primary{position:relative;}
 
-.contact-item i {
-    font-size: 1.2rem;
-    color: var(--light-blue);
+/* ─── FOOTER ──────────────────────────────────────────────────── */
+.footer{background:var(--navy);color:rgba(255,255,255,.65);padding:5rem 0 2.5rem;}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;
+  margin-bottom:4rem;
 }
-
-.contact-button {
-    text-decoration: none;
-    color: inherit;
+.footer-brand{}
+.footer-logo{
+  font-family:var(--ff-head);font-size:1.4rem;font-weight:800;color:var(--white);
+  letter-spacing:-.02em;margin-bottom:.4rem;display:block;
 }
-
-.contact-button:hover {
-    color: var(--light-blue);
+.footer-logo-sub{font-size:.7rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem;display:block;}
+.footer-brand p{font-size:.88rem;line-height:1.7;margin-bottom:1.5rem;}
+.footer-social{display:flex;gap:.75rem;}
+.social-btn{
+  width:36px;height:36px;border-radius:10px;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.6);font-size:.85rem;text-decoration:none;
+  transition:background .2s,color .2s,border-color .2s;
 }
-
-/* Responsive Design para Contact Bar */
-@media (max-width: 768px) {
-    .contact-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .contact-logo {
-        height: 35px;
-    }
-    
-    .logo-container {
-        order: -1; /* Coloca el logo primero en móviles */
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
+.social-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.footer-col h4{font-family:var(--ff-head);font-size:.85rem;font-weight:700;color:var(--white);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.footer-col li a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.footer-col li a:hover{color:var(--gold);}
+.footer-contact-item{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.8rem;font-size:.88rem;}
+.footer-contact-item i{color:var(--sky);margin-top:.15rem;flex-shrink:0;}
+.footer-contact-item a{color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}
+.footer-contact-item a:hover{color:var(--white);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:.82rem;
 }
+.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none;}
 
-@media (max-width: 480px) {
-    .contact-logo {
-        height: 30px;
-    }
-    
-    .contact-content {
-        gap: 0.75rem;
-    }
-    
-    .contact-item {
-        font-size: 0.9rem;
-    }
-    
-    .contact-item i {
-        font-size: 1rem;
-    }
+/* ─── WHATSAPP FAB ────────────────────────────────────────────── */
+.wa-fab{
+  position:fixed;bottom:2rem;right:2rem;z-index:600;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:1.6rem;text-decoration:none;
+  box-shadow:0 8px 30px rgba(37,211,102,.4);
+  transition:transform .25s,box-shadow .25s;
+  animation:waPulse 3s ease-in-out infinite;
 }
-        .contact-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
-            animation: shimmer 4s infinite;
-        }
+@keyframes waPulse{
+  0%,100%{box-shadow:0 8px 30px rgba(37,211,102,.4);}
+  50%{box-shadow:0 8px 30px rgba(37,211,102,.7),0 0 0 12px rgba(37,211,102,.1);}
+}
+.wa-fab:hover{transform:scale(1.1);}
+.wa-tooltip{
+  position:absolute;right:68px;top:50%;transform:translateY(-50%);
+  background:var(--navy);color:white;
+  font-family:var(--ff-head);font-size:.75rem;font-weight:600;
+  padding:.4rem .8rem;border-radius:8px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.wa-tooltip::after{
+  content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);
+  width:0;height:0;border-left:6px solid var(--navy);
+  border-top:5px solid transparent;border-bottom:5px solid transparent;
+}
+.wa-fab:hover .wa-tooltip{opacity:1;}
 
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .contact-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            padding: 0 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 500;
-        }
-
-        .contact-item i {
-            font-size: 1.2rem;
-            color: var(--light-blue);
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(30, 58, 138, 0.1);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-heavy);
-            border-color: rgba(30, 58, 138, 0.2);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            font-size: 2rem;
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .service-description {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .service-features {
-            list-style: none;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-dark);
-        }
-
-        .service-features li::before {
-            content: '✓';
-            color: var(--secondary-blue);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            position: relative;
-            height: 250px;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-heavy);
-            border-color: var(--light-blue);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(30, 58, 138, 0.9));
-            color: var(--text-light);
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery-description {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            background: var(--primary-gradient);
-            color: var(--text-light);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-gradient);
-            color: var(--text-light);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-section p,
-        .footer-section li {
-            margin-bottom: 0.75rem;
-            opacity: 0.9;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-section a:hover {
-            color: var(--light-blue);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
-            text-align: center;
-            opacity: 0.8;
-        }
-
-        /* Animations */
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .contact-content {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .carousel-section {
-                padding: 1rem 0;
-            }
-            
-            .carousel-track {
-                height: 280px;
-            }
-            
-            .carousel-nav {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .carousel-prev {
-                left: 15px;
-            }
-            
-            .carousel-next {
-                right: 15px;
-            }
-            
-            .carousel-caption {
-                padding: 1.5rem;
-            }
-            
-            .carousel-caption h3 {
-                font-size: 1.1rem;
-            }
-            
-            .carousel-caption p {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .carousel-track {
-                height: 220px;
-            }
-            
-            .carousel-caption {
-                padding: 1rem;
-            }
-            
-            .carousel-caption h3 {
-                font-size: 1rem;
-            }
-            
-            .carousel-caption p {
-                font-size: 0.8rem;
-            }
-            
-            .carousel-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Image loading fallback */
-        .gallery-item img {
-            background-color: #f1f5f9;
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="%23e2e8f0"><rect width="400" height="300" fill="%23f1f5f9"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%2364748b" font-family="Arial, sans-serif" font-size="16">Cargando imagen...</text></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-        }
-    </style>   
-
-
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .why-grid{grid-template-columns:1fr;}
+  .why-visual{display:none;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .topbar{padding:.8rem 1.2rem;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{padding:5rem 1.5rem 3rem;}
+  .hero-stats{flex-direction:column;gap:1rem;}
+  .slide{grid-template-columns:1fr;}
+  .slide-img{height:220px;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .g-item:nth-child(1){grid-column:span 2;height:220px;}
+  .g-item:nth-child(3),.g-item:nth-child(4),.g-item:nth-child(5){height:180px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .contact-strip{gap:1.2rem;padding:.8rem 1.2rem;}
+  .strip-sep{display:none;}
+  .section{padding:4.5rem 0;}
+  .container{padding:0 1.2rem;}
+}
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .g-item:nth-child(1){grid-column:span 1;height:200px;}
+  .g-item{height:180px!important;}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-content">
-            <div class="logo">Gestión Integral</div>
-            <ul class="nav-links">
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Contact Bar -->
-    <div class="contact-bar">
-        <div class="contact-content">
-<div class="logo-container">
-            <img src="logo 2.png" alt="Gestión Integral Consultorías" class="contact-logo">
-        </div>
-            <div class="contact-item">
-                <i class="fas fa-user"></i>
-                <span>Jhon Jairo Guillen</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>312 680 5599</span>
-            </div>
-<a href="mailto:GestionintegralGHSST@GMAIL.COM" class="contact-button">
-  <div class="contact-item">
-    <i class="fas fa-envelope"></i>
-    <span>GestionintegralGHSST@GMAIL.COM</span>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- WhatsApp FAB -->
+<a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios." class="wa-fab" target="_blank" rel="noopener" title="WhatsApp">
+  <div class="wa-tooltip">¡Escríbenos ahora!</div>
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- TOPBAR NAV -->
+<nav class="topbar" id="topbar">
+  <div class="topbar-logo">
+    Gestión Integral
+    <span>Consultorías</span>
   </div>
-</a>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Bogotá, Colombia</span>
-            </div>
-        </div>
-    </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#clientes">Clientes</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://api.whatsapp.com/send?phone=573126805599" class="nav-cta" target="_blank">
+    <i class="fab fa-whatsapp"></i> Cotizar ahora
+  </a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Gestión Integral Consultorías</h1>
-            <p class="hero-subtitle">Especialistas en Seguridad y Salud en el Trabajo, Gestión Humana Estratégica, Seguridad Social Integral y Gestión de Nómina</p>
-            <div class="hero-cta">
-                <a href="#servicios" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i>
-                    Conoce Nuestros Servicios
-                </a>
-                                <a href="#contacto" class="btn btn-secondary" onclick="window.open('https://api.whatsapp.com/send?phone=573126805599', '_blank')">
-    <i class="fab fa-whatsapp"></i>
-    Contáctanos Ahora
-</a>
-            </div>
-        </div>
-    </section>
-
-
-<!-- Carrusel Section -->
-<div class="carousel-section fade-in">
-    <div class="carousel-container">
-        <div class="carousel-track" id="carousel-track">
-            <div class="carousel-slide">
-                <img src="image006.webp" alt="Sistema de Gestión SG-SST" loading="lazy">
-                <div class="carousel-caption">
-                    <h3>Sistema de Gestión SG-SST</h3>
-                    <p>Implementación de sistemas de seguridad y salud en el trabajo</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="image009.webp" alt="Tendencias en Gestión del Talento Humano" loading="lazy">
-                <div class="carousel-caption">
-                    <h3>Tendencias en Gestión del Talento</h3>
-                    <p>Conferencias sobre gestión estratégica de recursos humanos</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="image012.webp" alt="Oficinas de Consultoría" loading="lazy">
-                <div class="carousel-caption">
-                    <h3>Nuestras Oficinas</h3>
-                    <p>Las grandes organizaciones se construyen con personas felices, seguras y bien gestionadas. ¡Confía en nosotros para potenciar tu talento humano¡</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="image014.webp" alt="Eventos Corporativos" loading="lazy">
-                <div class="carousel-caption">
-                    <h3>Eventos Corporativos</h3>
-                    <p>Participación en importantes eventos del sector</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="image020.webp" alt="Boutique de Consultoría" loading="lazy">
-                <div class="carousel-caption">
-                    <h3>Boutique de Consultoría</h3>
-                    <p>Servicios personalizados para cada cliente</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="image036.webp" alt="Relaciones con Clientes" loading="lazy">
-                <div class="carousel-caption">
-                    <h3>Relaciones con Clientes</h3>
-                    <p>Construyendo relaciones duraderas y de confianza</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-nav carousel-prev" id="carousel-prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-nav carousel-next" id="carousel-next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-    <div class="carousel-dots" id="carousel-dots">
-        <!-- Los puntos se generarán dinámicamente con JavaScript -->
-    </div>
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <a href="tel:3126805599"><i class="fas fa-phone"></i>312 680 5599</a>
+  <div class="strip-sep"></div>
+  <a href="mailto:GestionintegralGHSST@GMAIL.COM"><i class="fas fa-envelope"></i>GestionintegralGHSST@gmail.com</a>
+  <div class="strip-sep"></div>
+  <a href="#"><i class="fas fa-map-marker-alt"></i>Bogotá, Colombia</a>
+  <div class="strip-sep"></div>
+  <a href="#"><i class="fas fa-user-tie"></i>Jhon Jairo Guillen</a>
 </div>
 
+<!-- ═══ HERO ═════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-accent-bar"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i>Consultores Certificados · Bogotá, Colombia</div>
+      <h1 class="hero-title">
+        Tu empresa,<br>
+        <span class="accent">protegida</span> y<br>
+        <span class="italic">potenciada.</span>
+      </h1>
+      <p class="hero-desc">Expertos en SG-SST, Gestión Humana Estratégica, Seguridad Social Integral y Nómina. Más de 10 años transformando organizaciones en Colombia.</p>
+      <div class="hero-actions">
+        <a href="#servicios" class="btn-hero-primary"><i class="fas fa-rocket"></i>Ver nuestros servicios</a>
+        <a href="https://api.whatsapp.com/send?phone=573126805599" class="btn-hero-secondary" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp directo</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>10+</strong><span>Años de experiencia</span></div>
+        <div class="hero-stat"><strong>200+</strong><span>Empresas atendidas</span></div>
+        <div class="hero-stat"><strong>4</strong><span>Líneas de servicio</span></div>
+      </div>
+    </div>
 
-
-    <!-- Services Section -->
-    <section class="section" id="servicios">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Nuestros Servicios Especializados</h2>
-                <p class="section-subtitle">Ofrecemos soluciones integrales y personalizadas para el crecimiento y cumplimiento normativo de tu empresa</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h3 class="service-title">Sistema de Gestión SG-SST</h3>
-                    <p class="service-description">Implementación completa del Sistema de Gestión de Seguridad y Salud en el Trabajo según normativa colombiana vigente.</p>
-                    <ul class="service-features">
-                        <li>Diagnóstico inicial del sistema de gestión</li>
-                        <li>Auditorías internas y acompañamiento ARL</li>
-                        <li>Elaboración de matriz IPER</li>
-                        <li>Capacitaciones especializadas</li>
-                        <li>Documentación legal completa</li>
-                    </ul>
-                </div>
-
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="service-title">Gestión Humana Estratégica</h3>
-                    <p class="service-description">Transformamos tu área de talento humano en un aliado estratégico para el crecimiento organizacional.</p>
-                    <ul class="service-features">
-                        <li>Reclutamiento y selección de personal</li>
-                        <li>Gestión del desempeño</li>
-                        <li>Planes de desarrollo profesional</li>
-                        <li>Gestión de portales gubernamentales</li>
-                        <li>Desarrollo organizacional</li>
-                    </ul>
-                </div>
-
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="service-title">Seguridad Social Integral</h3>
-                    <p class="service-description">Gestión eficiente de obligaciones en seguridad social, garantizando cumplimiento y beneficios para empleados.</p>
-                    <ul class="service-features">
-                        <li>Afiliaciones al sistema de salud</li>
-                        <li>Gestión de pensiones obligatorias</li>
-                        <li>Manejo de incapacidades y licencias</li>
-                        <li>Asesoría en prestaciones sociales</li>
-                        <li>Cumplimiento normativo</li>
-                    </ul>
-                </div>
-
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3 class="service-title">Gestión de Nómina</h3>
-                    <p class="service-description">Soluciones precisas y confiables para la administración de nómina, cumpliendo todas las obligaciones legales.</p>
-                    <ul class="service-features">
-                        <li>Liquidación de nómina mensual/quincenal</li>
-                        <li>Cálculo de horas extras y recargos</li>
-                        <li>Retenciones en la fuente</li>
-                        <li>Implementación de sistemas</li>
-                        <li>Reportes gerenciales</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="hero-right">
+      <div class="hero-card-main">
+        <img src="image006.webp" alt="Consultoría SG-SST"
+             onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.style.height='220px';this.removeAttribute('src');">
+        <div class="card-service-tags">
+          <span class="tag">SG-SST</span>
+          <span class="tag">Gestión Humana</span>
+          <span class="tag gold">Nómina</span>
         </div>
-    </section>
+        <h4>Consultoría especializada a tu medida</h4>
+        <p>Acompañamos cada etapa de tu empresa con soluciones normativas, estratégicas y operativas.</p>
+      </div>
+      <div class="hero-float-card fc-top">
+        <div class="fc-icon blue"><i class="fas fa-check-double"></i></div>
+        <div><strong>Cumplimiento normativo</strong><span>Decreto 1072 · Resolución 0312</span></div>
+      </div>
+      <div class="hero-float-card fc-bottom">
+        <div class="fc-icon gold"><i class="fas fa-star"></i></div>
+        <div><strong>Calificación 5★</strong><span>Satisfacción de clientes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Gallery Section -->
-    <section class="section gallery-section" id="galeria">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Galería de Nuestro Trabajo</h2>
-                <p class="section-subtitle">Conoce algunos momentos destacados de nuestras capacitaciones, implementaciones y asesorías</p>
+<!-- TRUST MARQUEE -->
+<div class="trust-bar">
+  <div class="trust-track" id="trust-track">
+    <div class="trust-item"><i class="fas fa-hard-hat"></i>SG-SST</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-users"></i>Gestión Humana</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-calculator"></i>Nómina Empresarial</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-shield-alt"></i>Seguridad Social</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-file-contract"></i>Decreto 1072</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-clipboard-check"></i>Resolución 0312</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-university"></i>Auditorías Internas</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-sitemap"></i>Desarrollo Organizacional</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-certificate"></i>+10 Años de Experiencia</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-building"></i>Bogotá, Colombia</div>
+    <div class="trust-dot"></div>
+    <!-- duplicado para loop infinito -->
+    <div class="trust-item"><i class="fas fa-hard-hat"></i>SG-SST</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-users"></i>Gestión Humana</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-calculator"></i>Nómina Empresarial</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-shield-alt"></i>Seguridad Social</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-file-contract"></i>Decreto 1072</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-clipboard-check"></i>Resolución 0312</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-university"></i>Auditorías Internas</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-sitemap"></i>Desarrollo Organizacional</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-certificate"></i>+10 Años de Experiencia</div>
+    <div class="trust-dot"></div>
+    <div class="trust-item"><i class="fas fa-building"></i>Bogotá, Colombia</div>
+    <div class="trust-dot"></div>
+  </div>
+</div>
+
+<!-- ═══ SERVICIOS ═════════════════════════════════════════════════ -->
+<section class="section services-bg" id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-eyebrow reveal">Nuestras especialidades</div>
+        <h2 class="section-title reveal reveal-d1">Lo que <span class="italic">hacemos mejor</span></h2>
+        <p class="section-sub reveal reveal-d2">Cuatro líneas de servicio diseñadas para garantizar el cumplimiento normativo y el crecimiento sostenible de tu empresa.</p>
+      </div>
+      <a href="https://api.whatsapp.com/send?phone=573126805599" class="btn-hero-primary reveal reveal-d2" target="_blank" style="align-self:flex-end;white-space:nowrap;">
+        <i class="fas fa-comments"></i>Solicitar asesoría
+      </a>
+    </div>
+
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-icon"><i class="fas fa-hard-hat"></i></div>
+        <h3 class="svc-title">Sistema de Gestión SG-SST</h3>
+        <p class="svc-desc">Implementamos tu sistema de Seguridad y Salud en el Trabajo desde cero o fortalecemos el existente, garantizando cumplimiento ante la ARL y el Ministerio de Trabajo.</p>
+        <ul class="svc-list">
+          <li>Diagnóstico inicial y evaluación estándares mínimos</li>
+          <li>Elaboración de Matriz IPER y plan de trabajo</li>
+          <li>Auditorías internas y acompañamiento ARL</li>
+          <li>Capacitaciones y brigadas de emergencia</li>
+          <li>Documentación legal 100% conforme Resolución 0312</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20me%20interesa%20el%20servicio%20de%20SG-SST." class="svc-arrow" target="_blank">Consultar servicio <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="svc-card reveal reveal-d1">
+        <div class="svc-num">02</div>
+        <div class="svc-icon"><i class="fas fa-users-cog"></i></div>
+        <h3 class="svc-title">Gestión Humana Estratégica</h3>
+        <p class="svc-desc">Convertimos tu área de talento humano en un verdadero aliado del negocio, alineando personas, procesos y cultura organizacional.</p>
+        <ul class="svc-list">
+          <li>Reclutamiento, selección y onboarding</li>
+          <li>Evaluación y gestión del desempeño</li>
+          <li>Planes de desarrollo y retención de talento</li>
+          <li>Gestión de portales gubernamentales (SECOP, SIGEP)</li>
+          <li>Clima y cultura organizacional</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20me%20interesa%20Gesti%C3%B3n%20Humana." class="svc-arrow" target="_blank">Consultar servicio <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="svc-card reveal reveal-d2">
+        <div class="svc-num">03</div>
+        <div class="svc-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3 class="svc-title">Seguridad Social Integral</h3>
+        <p class="svc-desc">Administramos de forma eficiente todas las obligaciones del sistema de seguridad social, evitando sanciones y optimizando beneficios para empleados y empleadores.</p>
+        <ul class="svc-list">
+          <li>Afiliaciones a salud, pensión y ARL</li>
+          <li>Gestión de incapacidades y licencias</li>
+          <li>Asesoría en prestaciones sociales y cesantías</li>
+          <li>PILA y pagos electrónicos</li>
+          <li>Cumplimiento normativo y auditorías</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20Seguridad%20Social." class="svc-arrow" target="_blank">Consultar servicio <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="svc-card reveal reveal-d3">
+        <div class="svc-num">04</div>
+        <div class="svc-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3 class="svc-title">Gestión de Nómina</h3>
+        <p class="svc-desc">Procesamos tu nómina con precisión y oportunidad, cumpliendo todas las obligaciones legales y entregando reportes gerenciales para la toma de decisiones.</p>
+        <ul class="svc-list">
+          <li>Liquidación mensual y quincenal</li>
+          <li>Cálculo de horas extras y recargos</li>
+          <li>Retenciones en la fuente y reportes DIAN</li>
+          <li>Implementación de software de nómina</li>
+          <li>Nómina electrónica y reportes gerenciales</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20necesito%20asesor%C3%ADa%20en%20N%C3%B3mina." class="svc-arrow" target="_blank">Consultar servicio <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESO ═══════════════════════════════════════════════════ -->
+<section class="section process-section" id="proceso">
+  <div class="container">
+    <div class="process-header">
+      <div class="section-eyebrow reveal">Cómo trabajamos</div>
+      <h2 class="section-title reveal reveal-d1">Nuestro proceso <span class="italic">probado</span></h2>
+      <p class="section-sub reveal reveal-d2">Metodología estructurada que garantiza resultados medibles desde el primer mes de trabajo conjunto.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-step-icon"><i class="fas fa-search"></i></div>
+        <h4>Diagnóstico Inicial</h4>
+        <p>Evaluamos el estado actual de tu empresa: normatividad, procesos de talento humano, nómina y gestión de riesgos.</p>
+      </div>
+      <div class="process-step reveal reveal-d1">
+        <div class="process-step-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h4>Plan Personalizado</h4>
+        <p>Diseñamos un plan de trabajo a la medida de tu empresa, con hitos claros, entregables y cronograma de implementación.</p>
+      </div>
+      <div class="process-step reveal reveal-d2">
+        <div class="process-step-icon"><i class="fas fa-cogs"></i></div>
+        <h4>Implementación</h4>
+        <p>Ejecutamos el plan con acompañamiento continuo, documentación completa y capacitación a tu equipo interno.</p>
+      </div>
+      <div class="process-step reveal reveal-d3">
+        <div class="process-step-icon"><i class="fas fa-chart-line"></i></div>
+        <h4>Seguimiento & Mejora</h4>
+        <p>Auditamos periódicamente los resultados, ajustamos el sistema y te mantenemos siempre actualizado ante cambios normativos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLIENTES CAROUSEL ═════════════════════════════════════════ -->
+<section class="section clients-section" id="clientes">
+  <div class="container">
+    <div class="clients-header">
+      <div class="section-eyebrow reveal" style="justify-content:center;">Empresas que confían en nosotros</div>
+      <h2 class="section-title reveal reveal-d1" style="text-align:center;">Lo que dicen<br><span class="italic">nuestros clientes</span></h2>
+    </div>
+
+    <div class="carousel-wrap reveal reveal-d2">
+      <!-- progress bar -->
+      <div style="position:relative;height:3px;background:rgba(10,22,40,.1);border-radius:2px;margin-bottom:1.5rem;">
+        <div class="car-progress" id="car-progress" style="width:33.3%"></div>
+      </div>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="car-track">
+
+          <!-- Slide 1 -->
+          <div class="slide active" id="slide-0">
+            <div class="slide-img">
+              <img src="image006.webp" alt="Portaltex SAS"
+                   onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
             </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item fade-in">
-                    <img src="image006.webp" alt="Sistema de Gestión SG-SST" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4 class="gallery-title">Sistema de Gestión SG-SST</h4>
-                        <p class="gallery-description">Implementación de sistemas de seguridad y salud en el trabajo</p>
-                    </div>
+            <div class="slide-info">
+              <div>
+                <div class="slide-category"><i class="fas fa-hard-hat"></i>SG-SST</div>
+                <h3>Portaltex S.A.S.</h3>
+                <p>Empresa del sector textil en Bogotá que confió en Gestión Integral para implementar su sistema de seguridad y salud en el trabajo de forma completa y certificada.</p>
+                <div class="slide-quote">
+                  "La implementación del SG-SST fue impecable. Cumplieron con todos los requisitos legales y nos capacitaron adecuadamente. Ahora tenemos un sistema robusto que protege a nuestros colaboradores."
                 </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="image009.webp" alt="Tendencias en Gestión del Talento Humano" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4 class="gallery-title">Tendencias en Gestión del Talento</h4>
-                        <p class="gallery-description">Conferencias sobre gestión estratégica de recursos humanos</p>
-                    </div>
+              </div>
+              <div class="slide-author">
+                <img src="./Foto Nicolas Luque.jpeg" alt="Nicolás Luque" class="slide-avatar"
+                     onerror="this.outerHTML='<div class=\'slide-avatar-placeholder\'>NL</div>'">
+                <div>
+                  <div class="slide-author-name">Nicolás Luque</div>
+                  <div class="slide-author-role">Director General · Portaltex S.A.S.</div>
                 </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="image012.webp" alt="Oficinas de Consultoría" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4 class="gallery-title">Nuestras Oficinas</h4>
-                        <p class="gallery-description">Las grandes organizaciones se construyen con personas felices, seguras y bien gestionadas. ¡Confía en nosotros para potenciar tu talento humano¡</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="image014.webp" alt="Eventos Corporativos" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4 class="gallery-title">Eventos Corporativos</h4>
-                        <p class="gallery-description">Participación en importantes eventos del sector</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="image020.webp" alt="Boutique de Consultoría" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4 class="gallery-title">Boutique de Consultoría</h4>
-                        <p class="gallery-description">Servicios personalizados para cada cliente</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="image036.webp" alt="Relaciones con Clientes" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4 class="gallery-title">Relaciones con Clientes</h4>
-                        <p class="gallery-description">Construyendo relaciones duraderas y de confianza</p>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="slide" id="slide-1">
+            <div class="slide-img">
+              <img src="image009.webp" alt="Empresa Gestión Humana"
+                   onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+            </div>
+            <div class="slide-info">
+              <div>
+                <div class="slide-category"><i class="fas fa-users"></i>Gestión Humana</div>
+                <h3>Corporación DEF</h3>
+                <p>Organización del sector educativo que transformó su área de talento humano gracias al acompañamiento estratégico de Gestión Integral Consultorías.</p>
+                <div class="slide-quote">
+                  "Su asesoría en gestión humana transformó nuestro departamento. Pasamos de ser un área administrativa a un socio estratégico del negocio. Los resultados son evidentes en nuestro clima laboral."
+                </div>
+              </div>
+              <div class="slide-author">
+                <div class="slide-avatar-placeholder">AR</div>
+                <div>
+                  <div class="slide-author-name">Ana Patricia Rodríguez</div>
+                  <div class="slide-author-role">Directora Ejecutiva · Corporación DEF</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="slide" id="slide-2">
+            <div class="slide-img">
+              <img src="image036.webp" alt="STIHL Colombia"
+                   onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+            </div>
+            <div class="slide-info">
+              <div>
+                <div class="slide-category"><i class="fas fa-file-invoice-dollar"></i>Nómina & Seguridad Social</div>
+                <h3>Almacén STIHL S.A.</h3>
+                <p>Concesionario líder de herramientas y equipos que optimizó sus procesos de nómina y seguridad social, reduciendo errores y tiempos de procesamiento.</p>
+                <div class="slide-quote">
+                  "Gracias a su experiencia en nómina y seguridad social, hemos optimizado nuestros procesos reduciendo errores y ahorrando tiempo valioso para nuestro equipo administrativo."
+                </div>
+              </div>
+              <div class="slide-author">
+                <img src="Maicol.webp" alt="Maicol Hoyos" class="slide-avatar"
+                     onerror="this.outerHTML='<div class=\'slide-avatar-placeholder\'>MH</div>'">
+                <div>
+                  <div class="slide-author-name">Maicol Hoyos</div>
+                  <div class="slide-author-role">Gerente General · Almacén STIHL S.A.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /viewport -->
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <button class="car-btn" id="car-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <div class="car-dots" id="car-dots">
+          <button class="car-dot active" data-idx="0"></button>
+          <button class="car-dot" data-idx="1"></button>
+          <button class="car-dot" data-idx="2"></button>
         </div>
-    </section>
+        <button class="car-btn" id="car-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+      </div>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section" id="testimonios">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
-                <p class="section-subtitle">Testimonios de empresas que han confiado en nuestros servicios especializados</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p>"La implementación del SG-SST fue impecable. Cumplieron con todos los requisitos legales y nos capacitaron adecuadamente. Ahora tenemos un sistema robusto que protege a nuestros colaboradores."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="./Foto Nicolas Luque.jpeg" alt="Nicolás Luque" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Nicolás Luque</h4>
-                            <p>Director General de Portaltex S.A.S.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p>"Su asesoría en gestión humana transformó nuestro departamento. Pasamos de ser un área administrativa a un socio estratégico del negocio. Los resultados son evidentes en nuestro clima laboral."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Patricia Rodríguez" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Ana Patricia Rodríguez</h4>
-                            <p>Directora Ejecutiva, Corporación DEF</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p>"Gracias a su experiencia en nómina y seguridad social, hemos optimizado nuestros procesos reduciendo errores y ahorrando tiempo valioso para nuestro equipo administrativo."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="Maicol.webp" alt="Maicol Hoyos" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Maicol Hoyos</h4>
-                            <p>Gerente general almacén STIHL S.A.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Thumbnail strip -->
+      <div class="thumb-strip" id="thumb-strip">
+        <div style="text-align:center;">
+          <div class="thumb active" data-idx="0">
+            <img src="image006.webp" alt="Portaltex"
+                 onerror="this.style.background='#1354a8';this.removeAttribute('src');">
+          </div>
+          <div class="thumb-label">Portaltex</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contacto">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Gestión Integral Consultorías</h3>
-                    <p>Expertos en brindar soluciones integrales para la gestión de tu talento humano, seguridad social y cumplimiento normativo.</p>
-                    <p>Más de 10 años de experiencia respaldando el crecimiento de empresas en Colombia.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Información de Contacto</h3>
-                    <p><i class="fas fa-user"></i> Jhon Jairo Guillen</p>
-                    <p><i class="fas fa-phone"></i> 312 680 5599</p>
-                    <p><i class="fas fa-envelope"></i> GestionintegralGHSST@GMAIL.COM</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Nuestros Servicios</h3>
-                    <ul>
-                        <li><a href="#servicios">Seguridad y Salud en el Trabajo</a></li>
-                        <li><a href="#servicios">Gestión Humana Estratégica</a></li>
-                        <li><a href="#servicios">Seguridad Social Integral</a></li>
-                        <li><a href="#servicios">Gestión de Nómina</a></li>
-                        <li><a href="#galeria">Galería de Servicios</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h3>¿Por Qué Elegirnos?</h3>
-                    <ul>
-                        <li>Experiencia comprobada en el sector</li>
-                        <li>Equipo multidisciplinario especializado</li>
-                        <li>Acompañamiento integral y personalizado</li>
-                        <li>Cumplimiento normativo garantizado</li>
-                        <li>Tecnología y metodologías actualizadas</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Gestión Integral Consultorías. Todos los derechos reservados.</p>
-            </div>
+        <div style="text-align:center;">
+          <div class="thumb" data-idx="1">
+            <img src="image009.webp" alt="Corporación DEF"
+                 onerror="this.style.background='#1354a8';this.removeAttribute('src');">
+          </div>
+          <div class="thumb-label">Corp. DEF</div>
         </div>
-    </footer>
+        <div style="text-align:center;">
+          <div class="thumb" data-idx="2">
+            <img src="image036.webp" alt="STIHL"
+                 onerror="this.style.background='#1354a8';this.removeAttribute('src');">
+          </div>
+          <div class="thumb-label">STIHL S.A.</div>
+        </div>
+      </div>
+    </div><!-- /carousel-wrap -->
+  </div>
+</section>
 
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-        });
+<!-- ═══ GALERÍA ═══════════════════════════════════════════════════ -->
+<section class="section gallery-section" id="galeria">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:1rem;">
+      <div>
+        <div class="section-eyebrow reveal">Nuestro trabajo en imágenes</div>
+        <h2 class="section-title reveal reveal-d1">Galería de <span class="italic">experiencias</span></h2>
+      </div>
+      <p class="section-sub reveal reveal-d2" style="max-width:380px;">Capacitaciones, implementaciones y momentos que evidencian nuestro compromiso con cada cliente.</p>
+    </div>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <div class="gallery-grid">
+      <div class="g-item reveal">
+        <img src="image006.webp" alt="SG-SST" onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+        <div class="g-badge">SG-SST</div>
+        <div class="g-overlay"><h4>Implementación SG-SST</h4><p>Sistemas de seguridad y salud en el trabajo</p></div>
+      </div>
+      <div class="g-item reveal reveal-d1">
+        <img src="image009.webp" alt="Gestión Talento" onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+        <div class="g-badge">Gestión Humana</div>
+        <div class="g-overlay"><h4>Tendencias en Talento</h4><p>Conferencias y formación estratégica</p></div>
+      </div>
+      <div class="g-item reveal reveal-d2">
+        <img src="image012.webp" alt="Oficinas" onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+        <div class="g-badge">Consultoría</div>
+        <div class="g-overlay"><h4>Nuestras Oficinas</h4><p>Espacios diseñados para asesoría de alto nivel</p></div>
+      </div>
+      <div class="g-item reveal">
+        <img src="image014.webp" alt="Eventos" onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+        <div class="g-badge">Eventos</div>
+        <div class="g-overlay"><h4>Eventos Corporativos</h4><p>Participación activa en el sector</p></div>
+      </div>
+      <div class="g-item reveal reveal-d1">
+        <img src="image020.webp" alt="Boutique" onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+        <div class="g-badge">Servicios</div>
+        <div class="g-overlay"><h4>Boutique de Consultoría</h4><p>Soluciones a la medida de cada cliente</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══ POR QUÉ ELEGIRNOS ══════════════════════════════════════════ -->
+<section class="section why-section" id="nosotros">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-visual reveal">
+        <img src="image012.webp" alt="Equipo Gestión Integral" class="why-img-main"
+             onerror="this.style.background='linear-gradient(135deg,#0f2040,#1354a8)';this.removeAttribute('src');">
+        <img src="image036.webp" alt="Consultoría" class="why-img-float"
+             onerror="this.style.display='none'">
+        <div class="why-badge-float">
+          <strong>10+</strong>
+          <span>Años en el mercado</span>
+        </div>
+      </div>
+      <div>
+        <div class="section-eyebrow reveal">¿Por qué elegirnos?</div>
+        <h2 class="section-title reveal reveal-d1">Resultados reales para<br><span class="italic">tu empresa</span></h2>
+        <p class="section-sub reveal reveal-d2">No somos un proveedor más. Somos un aliado comprometido con el crecimiento y la sostenibilidad de tu organización.</p>
+        <div class="why-list">
+          <div class="why-item reveal">
+            <div class="why-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <h4>Experiencia Comprobada</h4>
+              <p>Más de 10 años asesorando empresas de todos los sectores en Colombia, con resultados medibles y referencias reales.</p>
+            </div>
+          </div>
+          <div class="why-item reveal reveal-d1">
+            <div class="why-icon"><i class="fas fa-sliders-h"></i></div>
+            <div>
+              <h4>Soluciones a la Medida</h4>
+              <p>Cada empresa es única. Diseñamos estrategias personalizadas que se adaptan a tu tamaño, sector y necesidades específicas.</p>
+            </div>
+          </div>
+          <div class="why-item reveal reveal-d2">
+            <div class="why-icon"><i class="fas fa-sync-alt"></i></div>
+            <div>
+              <h4>Actualización Normativa Permanente</h4>
+              <p>Te mantenemos siempre al día con cambios en la legislación laboral, seguridad social y SG-SST para evitar sanciones.</p>
+            </div>
+          </div>
+          <div class="why-item reveal reveal-d3">
+            <div class="why-icon"><i class="fas fa-headset"></i></div>
+            <div>
+              <h4>Acompañamiento Integral</h4>
+              <p>Presencia continua durante todo el proceso, con comunicación directa y reportes periódicos de avance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══ CTA BAND ══════════════════════════════════════════════════ -->
+<div class="cta-band">
+  <div class="container">
+    <h2 class="reveal">¿Listo para transformar<br>tu gestión empresarial?</h2>
+    <p class="reveal reveal-d1">Habla hoy con nuestro equipo y recibe una diagnóstico inicial sin costo.</p>
+    <a href="https://api.whatsapp.com/send?phone=573126805599&text=Hola,%20quiero%20recibir%20un%20diagn%C3%B3stico%20gratuito%20de%20mis%20procesos." class="btn-hero-primary reveal reveal-d2" target="_blank">
+      <i class="fab fa-whatsapp"></i>Solicitar diagnóstico gratuito
+    </a>
+  </div>
+</div>
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">Gestión Integral</span>
+        <span class="footer-logo-sub">Consultorías</span>
+        <p>Expertos en SG-SST, Gestión Humana, Seguridad Social y Nómina. Más de 10 años respaldando el crecimiento responsable de empresas colombianas.</p>
+        <div class="footer-social">
+          <a href="https://api.whatsapp.com/send?phone=573126805599" class="social-btn" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:GestionintegralGHSST@GMAIL.COM" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:3126805599" class="social-btn" title="Llamar"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Sistema SG-SST</a></li>
+          <li><a href="#servicios">Gestión Humana Estratégica</a></li>
+          <li><a href="#servicios">Seguridad Social Integral</a></li>
+          <li><a href="#servicios">Gestión de Nómina</a></li>
+          <li><a href="#galeria">Galería de Trabajo</a></li>
+        </ul>
+      </div>
 
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+      <div class="footer-col">
+        <h4>Normativa</h4>
+        <ul>
+          <li><a href="#">Decreto 1072 de 2015</a></li>
+          <li><a href="#">Resolución 0312 de 2019</a></li>
+          <li><a href="#">Código Sustantivo del Trabajo</a></li>
+          <li><a href="#">Ley 100 de 1993</a></li>
+          <li><a href="#">PILA Electrónica</a></li>
+        </ul>
+      </div>
 
-        // Add loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-        });
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-user-tie"></i>
+          <span>Jhon Jairo Guillen</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:3126805599">312 680 5599</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:GestionintegralGHSST@GMAIL.COM">GestionintegralGHSST@gmail.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Bogotá, Colombia</span>
+        </div>
+      </div>
+    </div>
 
+    <div class="footer-bottom">
+      <span>© 2025 Gestión Integral Consultorías · Todos los derechos reservados.</span>
+      <a href="mailto:GestionintegralGHSST@GMAIL.COM">Desarrollado con ❤ en Colombia</a>
+    </div>
+  </div>
+</footer>
 
-
-// Carrusel functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const track = document.getElementById('carousel-track');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
-    const dotsContainer = document.getElementById('carousel-dots');
-    
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    
-    // Create dots
-    slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('carousel-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-    });
-    
-    const dots = document.querySelectorAll('.carousel-dot');
-    
-    function updateCarousel() {
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }
-    
-    function goToSlide(slideIndex) {
-        currentSlide = slideIndex;
-        updateCarousel();
-    }
-    
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-    }
-    
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-    }
-    
-    // Event listeners
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-    
-    // Auto-advance every 5 seconds
-    let autoSlide = setInterval(nextSlide, 5000);
-    
-    // Pause auto-advance on hover
-    const carouselContainer = document.querySelector('.carousel-container');
-    carouselContainer.addEventListener('mouseenter', () => {
-        clearInterval(autoSlide);
-    });
-    
-    carouselContainer.addEventListener('mouseleave', () => {
-        autoSlide = setInterval(nextSlide, 5000);
-    });
-    
-    // Touch/swipe support for mobile
-    let startX = 0;
-    let endX = 0;
-    
-    carouselContainer.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
-    
-    carouselContainer.addEventListener('touchend', (e) => {
-        endX = e.changedTouches[0].clientX;
-        handleSwipe();
-    });
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = startX - endX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                nextSlide(); // Swipe left
-            } else {
-                prevSlide(); // Swipe right
-            }
-        }
-    }
+<!-- ─── SCRIPTS ───────────────────────────────────────────────── -->
+<script>
+/* Custom cursor */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=window.innerWidth/2, my=window.innerHeight/2;
+let rx=mx, ry=my;
+document.addEventListener('mousemove', e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button,.svc-card,.g-item,.thumb').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='16px';cursor.style.height='16px';ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='var(--gold)';});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='var(--sky)';});
 });
 
+/* Topbar scroll */
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll',()=>{
+  topbar.classList.toggle('scrolled', window.scrollY > 80);
+});
 
-    </script>
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* Reveal on scroll */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>revealObs.observe(el));
+
+/* ─ Clients Carousel ─ */
+(function(){
+  const track = document.getElementById('car-track');
+  const slides = track.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.car-dot');
+  const thumbs = document.querySelectorAll('.thumb');
+  const progress = document.getElementById('car-progress');
+  let current = 0;
+  const total = slides.length;
+
+  function goTo(idx){
+    slides[current].classList.remove('active');
+    current = (idx + total) % total;
+    slides[current].classList.add('active');
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d,i)=>d.classList.toggle('active', i===current));
+    thumbs.forEach((t,i)=>t.classList.toggle('active', i===current));
+    progress.style.width = ((current+1)/total*100)+'%';
+  }
+
+  document.getElementById('car-next').addEventListener('click',()=>goTo(current+1));
+  document.getElementById('car-prev').addEventListener('click',()=>goTo(current-1));
+  dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.idx)));
+  thumbs.forEach(t=>t.addEventListener('click',()=>goTo(+t.dataset.idx)));
+
+  // Touch swipe
+  let sx=0;
+  track.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+  track.addEventListener('touchend',e=>{
+    const dx=sx-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>50) goTo(dx>0?current+1:current-1);
+  });
+
+  // Auto-advance
+  let auto = setInterval(()=>goTo(current+1), 6000);
+  track.closest('.carousel-wrap').addEventListener('mouseenter',()=>clearInterval(auto));
+  track.closest('.carousel-wrap').addEventListener('mouseleave',()=>{auto=setInterval(()=>goTo(current+1),6000);});
+})();
+</script>
 </body>
 </html>
