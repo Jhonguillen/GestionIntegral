@@ -71,12 +71,18 @@ body::before{
   display:flex;align-items:center;gap:.75rem;
 }
 .topbar-logo-img{
-  height:42px;width:auto;
-  filter:brightness(0) invert(1);
-  transition:filter .3s;
+  height:46px;width:auto;
+  /* el logo tiene fondo claro, así que lo mostramos en sus colores
+     reales dentro de una pastilla blanca para que resalte sobre el navy */
+  background:var(--white);
+  border-radius:10px;
+  padding:4px 8px;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+  transition:transform .3s,box-shadow .3s;
 }
 .topbar.scrolled .topbar-logo-img{
-  filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(232,161,36,.4));
+  box-shadow:0 4px 18px rgba(232,161,36,.45);
+  transform:scale(1.02);
 }
 .topbar-logo{
   font-family:var(--ff-head);font-weight:800;font-size:1.15rem;
